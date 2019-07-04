@@ -6,8 +6,8 @@ workflows:
           docker:
           - image: circleci/openjdk:8-jdk
           steps:
-          - checkout: # Takes repo from github
-          - run: 
+           - checkout: # Takes repo from github
+           - run: 
               name: Gradle Test
               command: |
                gradle test
@@ -15,10 +15,11 @@ workflows:
           filters:
             branches:
               only: master
-          - run:
+          steps:
+           - run:
              name: job2
              command: |
               gradle jar
-          - store_artifacts:
+           - store_artifacts:
               path: build/test-results
               destination: prefix
