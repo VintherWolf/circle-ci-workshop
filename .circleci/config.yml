@@ -2,8 +2,8 @@ version: 2
 jobs:
   Test:
    docker:
-        - image: alpine:3.7
-     steps:
+       - image: alpine:3.7
+    steps:
        - run:
             name: The First Step
             command: |
