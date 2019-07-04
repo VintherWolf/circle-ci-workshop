@@ -36,6 +36,6 @@ workflows:
         requires:
           - initialTest
           - runGradleJar
-          filters:
-            branches:
-              only: master
+            filters:
+              branches:
+                only: master
