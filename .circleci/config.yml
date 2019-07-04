@@ -1,6 +1,7 @@
 version: 2
 jobs:
-  machine: true
+  dockerize:
+    machine: true
     steps:
      - checkout
      # Login to docker
