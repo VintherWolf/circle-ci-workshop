@@ -1,6 +1,17 @@
 version: 2
 jobs:
+  Test:
+   docker:
+        - image: alpine:3.7
+     steps:
+       - run:
+            name: The First Step
+            command: |
+              echo 'Hello World!'
+              echo 'This is the delivery pipeline'
  dockerize:
+  requires:
+  - Test  
    machine: true
    steps:
      - checkout
@@ -8,7 +19,7 @@ jobs:
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
      # build the application image
-     - run: docker build -t company/app:$CIRCLE_SHA1 .
+     - run: docker build -t vintherwolf/gohomeapp:$CIRCLE_SHA1 .
 
      # deploy the image
-     - run: docker push company/app:$CIRCLE_SHA1
+     - run: docker push vintherwolf/gohomeapp:$CIRCLE_SHA1
