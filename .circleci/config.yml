@@ -9,5 +9,7 @@ jobs:
           name: Gradle Test
           command: |
            gradle test
-      - store_test_results:
-        path: build/test-results
+           gradle jar
+       - store_artifacts:
+          path: /code/test-results
+      
