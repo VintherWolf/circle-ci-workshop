@@ -33,10 +33,10 @@ workflows:
           requires:
             - initialTest
       - build:
+          filters:
+            branches:
+              only: 
+                - master
         requires:
           - initialTest
           - runGradleJar
-            filters:
-              branches:
-                only: 
-                  - master
