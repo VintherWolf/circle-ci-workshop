@@ -1,13 +1,41 @@
+version: 2.0
+jobs:
+  initialTest:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - run:
+        name:
+        command: gradle test
+      - store_test_results:
+        path: test-results
+  runGradleJar:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout:
+      - run:
+        command: gradle jar
+      - store_artifacts:
+        path: /code/test-results
+        destination: prefix    
+
 workflows:
   version: 2
-  feature_master:
+  jobSequence:
     jobs:
-      - test_feature:
+      - initialTest:
           filters:
             branches:
               only:
-                - feature/*
-      - test_and_build_master:
+                - master
+      - runGradleJar:
+          requires:
+            - initialTest
+      - build:
+        requires:
+          - initialTest
+          - runGradleJar
           filters:
             branches:
               only: master
