@@ -47,6 +47,6 @@ workflows:
             branches:
               only: 
                 - master
-        requires:
-          - initialTest
-          - runGradleJar
+          requires:
+            - initialTest
+            - runGradleJar
