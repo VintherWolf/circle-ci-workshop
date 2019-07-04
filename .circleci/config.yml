@@ -10,6 +10,6 @@ jobs:
           command: |
            gradle test
            gradle jar
-       - store_artifacts:
-          path: /code/test-results
+      - store_artifacts:
+         path: /code/test-results
       
