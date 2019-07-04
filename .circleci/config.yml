@@ -20,7 +20,7 @@ jobs:
           path: /code/test-results
           destination: prefix
   build:
-      docker:
+    docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout:
