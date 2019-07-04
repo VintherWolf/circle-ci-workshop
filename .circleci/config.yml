@@ -38,4 +38,5 @@ workflows:
           - runGradleJar
             filters:
               branches:
-                only: master
+                only: 
+                  - master
