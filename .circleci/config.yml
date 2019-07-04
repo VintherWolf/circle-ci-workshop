@@ -1,25 +1,14 @@
-workflows:
-  version: 2.0
-  feature_master:
-    jobs:
-     - test_feature:
-          docker:
-          - image: circleci/openjdk:8-jdk
-          steps:
-           - checkout: # Takes repo from github
-           - run: 
-              name: Gradle Test
-              command: |
-               gradle test
-     - job-2:
-          filters:
-            branches:
-              only: master
-          steps:
-           - run:
-             name: job2
-             command: |
-              gradle jar
-           - store_artifacts:
-              path: build/test-results
-              destination: prefix
+version: 2
+jobs:
+ dockerize:
+   machine: true
+   steps:
+     - checkout
+     # Login to docker
+     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+     # build the application image
+     - run: docker build -t company/app:$CIRCLE_SHA1 .
+
+     # deploy the image
+     - run: docker push company/app:$CIRCLE_SHA1
