@@ -1,18 +1,6 @@
 version: 2
 jobs:
-  Test:
-   docker:
-       - image: alpine:3.7
-    steps:
-       - run:
-            name: The First Step
-            command: |
-              echo 'Hello World!'
-              echo 'This is the delivery pipeline'
- dockerize:
-  requires:
-  - Test  
-   machine: true
+  machine: true
     steps:
      - checkout
      # Login to docker
