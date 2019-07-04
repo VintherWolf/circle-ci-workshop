@@ -4,31 +4,31 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
+      - checkout
       - run:
-        name:
-        command: gradle test
+          command: gradle test
       - store_test_results:
-        path: test-results
+          path: test-results
   runGradleJar:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout:
+      - checkout
       - run:
-        command: gradle jar
+          command: gradle jar
       - store_artifacts:
-        path: /code/test-results
-        destination: prefix
+          path: /code/test-results
+          destination: prefix
   build:
       docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout:
       - run:
-        command: gradle jar
+          command: gradle jar
       - store_artifacts:
-        path: /code/test-results
-        destination: prefix
+          path: /code/test-results
+          destination: prefix
 
 workflows:
   version: 2
