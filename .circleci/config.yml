@@ -6,6 +6,6 @@ jobs:
     steps:
       - checkout: https://circleci.com/gh/VintherWolf/circle-ci-workshop/
       - run: gradle
-          name: Gradle Test
+          name: test
           command: |
             gradle test
