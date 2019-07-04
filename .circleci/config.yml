@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout: https://circleci.com/gh/VintherWolf/circle-ci-workshop/
-      - run: gradle
-          name: test
+      - checkout: 
+      - run: 
+          name: Gradle Test
           command: |
-            gradle test
+          gradle test
