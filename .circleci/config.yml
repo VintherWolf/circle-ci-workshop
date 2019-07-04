@@ -18,7 +18,17 @@ jobs:
         command: gradle jar
       - store_artifacts:
         path: /code/test-results
-        destination: prefix    
+        destination: prefix
+  build:
+      docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout:
+      - run:
+        command: gradle jar
+      - store_artifacts:
+        path: /code/test-results
+        destination: prefix
 
 workflows:
   version: 2
