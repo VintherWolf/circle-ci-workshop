@@ -30,7 +30,7 @@ jobs:
       - run: docker build -t vintherwolf/circle-ci-workshop:$CIRCLE_SHA1 .
 
     # deploy the image 
-      - run: docker push vintherwolf/gohomeapp:$CIRCLE_SHA1
+      - run: docker push vintherwolf/circle-ci-workshop:$CIRCLE_SHA1
 
 workflows:
   version: 2
